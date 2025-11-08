@@ -118,4 +118,3 @@ Output:
 
 *Simple and effective house price prediction using deep learning (predictions shown in Lakhs).*
 
-```
