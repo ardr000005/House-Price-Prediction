@@ -1,75 +1,121 @@
+
 # 🏠 House Price Prediction using TensorFlow
 
-A neural network model to predict house prices based on features like size, bedrooms, age, and location.
+A **neural network regression model** to predict house prices based on key features such as size, bedrooms, age, and location.
+
+---
 
 ## 📋 Project Overview
 
-- **Model Type**: Regression Neural Network
-- **Features**: Size (sqft), Bedrooms, Age, Location
-- **Target**: House Price (in Lakhs)
-- **Framework**: TensorFlow/Keras
+- **Model Type:** Regression Neural Network  
+- **Features:** Size (sqft), Bedrooms, Age, Location  
+- **Target:** House Price (in Thousands → converted to Lakhs for output)  
+- **Frameworks:** TensorFlow / Keras  
+- **Dataset:** Custom CSV file (`house_prices.csv`)
+
+This project demonstrates a complete ML workflow — from preprocessing and model training to evaluation and manual prediction.
+
+---
 
 ## 🚀 Quick Start
 
-1. **Install dependencies**:
+### 1. Install dependencies
 ```bash
 pip install -r requirements.txt
-```
+````
 
-2. **Run the notebook**:
+### 2. Run the notebook
+
 ```bash
 jupyter notebook House_Price_Prediction.ipynb
 ```
 
-3. **Execute all cells** to:
-   - Load and preprocess data
-   - Train the neural network
-   - Evaluate model performance
-   - Make predictions
+### 3. Execute all cells to:
+
+* Load and preprocess data
+* Train and evaluate the neural network
+* Visualize results
+* Predict house prices manually
+
+---
 
 ## 📊 Dataset
 
-`house_prices.csv` contains:
-- `size_sqft`: House size in square feet
-- `bedrooms`: Number of bedrooms
-- `age`: House age in years
-- `location`: City (Chennai, Delhi, Hyderabad, Kochi, etc.)
-- `price`: Price in lakhs
+**File:** `house_prices.csv`
+
+| Column      | Description                                                       |
+| ----------- | ----------------------------------------------------------------- |
+| `size_sqft` | House size in square feet                                         |
+| `bedrooms`  | Number of bedrooms                                                |
+| `age`       | Age of the house in years                                         |
+| `location`  | City (Chennai, Delhi, Hyderabad, Kochi, etc.)                     |
+| `price`     | House price in **thousands** (converted to lakhs for predictions) |
+
+---
 
 ## 🧠 Model Architecture
 
 ```python
 Sequential([
-    Dense(64, activation='relu'),
+    Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
     Dense(32, activation='relu'),
-    Dense(1)  # Output layer
+    Dense(1)  # Output layer for regression
 ])
 ```
 
-## 📈 Results
-
-- **Mean Absolute Error**: ~7-10 Lakhs
-- **Training**: 100 epochs
-- **Visualizations**: Actual vs Predicted prices, Feature correlations
-
-## 💡 Usage Example
-
-```python
-# Manual prediction
-Input: 1800 sqft, 3 bedrooms, 10 years, Delhi
-Output: 🏠 Predicted Price: 128.54 Lakhs
-```
-
-## 📁 Files
-
-- `House_Price_Prediction.ipynb` - Main notebook
-- `house_prices.csv` - Dataset
-- `requirements.txt` - Dependencies
-
-## 👨‍💻 Author
-
-Aravind R Nair
+* **Optimizer:** Adam
+* **Loss:** Mean Squared Error
+* **Metric:** Mean Absolute Error (MAE)
+* **Epochs:** 100
 
 ---
 
-*Simple and effective house price prediction using deep learning*
+## 📈 Results
+
+* **Mean Absolute Error:** ~7–10 Thousand (≈ 0.07–0.10 Lakhs)
+* **Evaluation Metric:** MAE on Test Set
+* **Visualizations:**
+
+  * Feature correlation heatmap
+  * Actual vs Predicted price scatter plot
+  * Distribution of errors
+
+---
+
+## 💡 Example Prediction
+
+```python
+# Manual Prediction Example
+Input:
+  Size: 1800 sqft
+  Bedrooms: 3
+  Age: 10 years
+  Location: Delhi
+
+Output:
+  🏠 Predicted House Price: 1.28 Lakhs
+```
+
+*(Note: The model predicts in thousands and is converted to lakhs by dividing by 100.)*
+
+---
+
+## 📁 Files Included
+
+| File                           | Description                            |
+| ------------------------------ | -------------------------------------- |
+| `House_Price_Prediction.ipynb` | Main notebook containing full workflow |
+| `house_prices.csv`             | Dataset used for model training        |
+| `requirements.txt`             | List of Python dependencies            |
+
+---
+
+## 👨‍💻 Author
+
+**Aravind R Nair**
+
+---
+
+*Simple and effective house price prediction using deep learning (predictions shown in Lakhs).*
+
+```
